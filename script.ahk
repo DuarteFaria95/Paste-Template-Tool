@@ -9,14 +9,16 @@ Gui, Add, Edit, r5 vEditBoxT3 w200, Dear user,`nFollowing this message the ticke
 Gui, Add, Text,, Ctrl+Alt+t:
 Gui, Add, Edit, r5 vEditBoxT4 w200, Dear user,`nIn order to progress your issue we need to establish remote connection with your device. Please contact us at your convenience via call: https://fujitsu.service-now.com/ask_it?id=askit_contact_us `nKind regards
 Gui, Add, Text,, Ctrl+Alt+d:
-Gui, Add, Edit, r5 vEditBoxT5 w200, german agent needed
+Gui, Add, Edit, r5 vEditBoxT5 w200, Closing as per latest update from the user
+Gui, Add, Text,, Ctrl+Alt+a:
+Gui, Add, Edit, r5 vEditBoxT6 w200, R01\R01U-EMEIA-VPN-CBL
 
-Gui, Add, Button,x20 y500 w80 h22 vapply, Apply
-Gui, Add, Button,x20 y500 w80 h22 vedit, Edit
-Gui, Add, Button,x140 y500 w80 h22 gQuitButton, Quit
+Gui, Add, Button,x20 y601 w80 h22 vapply, Apply
+Gui, Add, Button,x20 y601 w80 h22 vedit, Edit
+Gui, Add, Button,x120 y601 w80 h22 gQuitButton, Quit
 
 Gui, +Alwaysontop
-Gui, Show, w240 h600, Paste Template Tool
+Gui, Show, w220 h630, Paste Template Tool
 GuiControl, Hide, Edit
 Return
 
@@ -29,12 +31,14 @@ ControlGetText, Var2 , edit2
 ControlGetText, Var3 , edit3
 ControlGetText, Var4 , edit4
 ControlGetText, Var5 , edit5
+ControlGetText, Var6 , edit6
 
 GuiControl, Disable, edit1
 GuiControl, Disable, edit2
 GuiControl, Disable, edit3
 GuiControl, Disable, edit4
 GuiControl, Disable, edit5
+GuiControl, Disable, edit6
 
 Return
 
@@ -47,6 +51,7 @@ GuiControl, Enable, edit2
 GuiControl, Enable, edit3
 GuiControl, Enable, edit4
 GuiControl, Enable, edit5
+GuiControl, Enable, edit6
 
 Return
 
@@ -63,39 +68,47 @@ return
 ^!q::
 	OldClip := Clipboard
 	Clipboard = %Var1%
-	
-	Send, ^v{enter} 
+	Send, ^v 
+	Sleep 100
 	Clipboard = %OldClip%
 return
 
 ^!w::
 	OldClip := Clipboard
 	Clipboard = %Var2%
-	
-	Send, ^v{enter} 
+	Send, ^v
+	Sleep 100
 	Clipboard = %OldClip%
 return
 
 ^!r::
 	OldClip := Clipboard
-	Clipboard = %Var3%
-	
-	Send, ^v{enter} 
+	Clipboard = %Var3%	
+	Send, ^v
+	Sleep 100
 	Clipboard = %OldClip%
 return
 
 ^!t::
 	OldClip := Clipboard
 	Clipboard = %Var4%
-	
-	Send, ^v{enter} 
+	Send, ^v
+	Sleep 100
 	Clipboard = %OldClip%
 return
 
 ^!d::
 	OldClip := Clipboard
 	Clipboard = %Var5%
-	
-	Send, ^v{enter} 
+	Send, ^v
+	Sleep 100
+	Clipboard = %OldClip%
+return
+
+^!a::
+	OldClip := Clipboard
+	Clipboard = %Var6%
+	Send, ^v 
+	Sleep 100
 	Clipboard = %OldClip%
 return
